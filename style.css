@@ -1,0 +1,126 @@
+/* 导入一个特殊的字体（例如：Google Fonts 上的 'Cinzel' 或 'Orbitron'）来增加神秘感 */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+:root {
+    --dark-bg: #0d0d1f; /* 深蓝紫色 */
+    --accent-color: #ffd700; /* 金色/亮黄色 */
+    --text-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: 'Cinzel', serif; /* 使用神秘字体 */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 保持内容靠上 */
+    min-height: 100vh;
+    text-align: center;
+}
+
+.tarot-container {
+    width: 90%;
+    max-width: 1000px;
+}
+
+header h1 {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* 标题发光 */
+}
+
+/* --- 卡牌样式 --- */
+.card-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px; /* 预留给卡牌和动画的空间 */
+    margin: 40px 0;
+}
+
+.tarot-card {
+    width: 150px;
+    height: 250px;
+    position: relative; /* 用于翻转动画 */
+    cursor: pointer;
+    transform-style: preserve-3d; /* 启用 3D 转换 */
+    transition: transform 0.8s; /* 翻转过渡时间 */
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* 隐藏背面 */
+    border-radius: 10px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* 卡牌发光 */
+    background-size: cover;
+    background-position: center;
+}
+
+.card-back {
+    /* 假设你有一张名为 'card-back.jpg' 的卡牌背面图片 */
+    background-image: url('card-back.jpg'); 
+}
+
+.card-front {
+    /* 初始时，正面是翻转的（不可见） */
+    transform: rotateY(180deg); 
+}
+
+/* 当卡牌被选择后，添加这个类让它翻转 */
+.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* 卡牌选中后的视觉效果 */
+.is-selected {
+    box-shadow: 0 0 30px 10px #ff00ff, 0 0 40px 15px #ff00ff; /* 更强的选中发光 */
+    transform: scale(1.1) translateY(-20px); /* 放大并提升 */
+    z-index: 10;
+}
+
+/* 按钮样式 */
+#draw-button {
+    background: linear-gradient(45deg, #4b0082, #8a2be2); /* 紫色渐变 */
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+}
+
+#draw-button:hover:not(:disabled) {
+    background: linear-gradient(45deg, #8a2be2, #4b0082);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+#draw-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* 结果区域样式 */
+#result-display {
+    padding: 20px;
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明背景 */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+#result-display.hidden {
+    display: none;
+}
+
+#card-meaning {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
