@@ -3,24 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 神秘塔罗抽牌</title>
+    <title>🌿 Lucky&Ease · 星光塔罗占卜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="tarot-container">
-        <header>
-            <h1>🔮 星光指引：随机抽牌 🔮</h1>
-            <p>集中你的意念，点击下方的按钮，让命运之轮为你揭示三张牌。</p>
-        </header>
 
-        <div class="card-area">
+<body class="lucky-theme">
+    <div class="tarot-container">
+
+        <!-- 品牌区 -->
+        <header class="brand-header">
+            <div class="brand-logo">
+                <!-- 如果你有 logo 图片换成 img 标签即可 -->
+                <span class="brand-text">Lucky&Ease</span>
+                <span class="brand-clover">🍀</span>
             </div>
 
-        <button id="draw-button">开始抽牌</button>
+            <h1>🌟 星光塔罗 · 今日指引</h1>
+            <p class="brand-desc">
+                专属你的 Lucky&Ease 命运解读。<br>
+                深呼吸 —— 在安逸中等一份属于你的幸运。
+            </p>
+        </header>
+
+        <!-- 牌区 -->
+        <div class="card-area initial"></div>
+
+        <button id="draw-button" class="brand-btn">
+            🍀 开始抽牌 · Lucky Draw
+        </button>
         
+        <!-- 抽牌结果 -->
         <div id="result-display" class="hidden">
-            <h2>✨ 你的选择与命运解读 ✨</h2>
-            <p id="card-meaning">请先选择一张牌。</p>
+            <h2 id="result-title">✨ 你的今日命运已揭晓 ✨</h2>
+            
+            <div class="result-details">
+
+                <section class="section-keyword">
+                    <h3>🔑 今日关键词</h3>
+                    <p id="key-words"></p>
+                </section>
+
+                <section class="section-fortune">
+                    <h3>🔮 今日运势解读</h3>
+                    <p id="daily-fortune"></p>
+                </section>
+
+                <div class="guide-and-tip">
+                    <section class="section-guide">
+                        <h3>🧭 行动指南</h3>
+                        <p>✅ 适合做：<span id="suitable-action"></span></p>
+                        <p>❌ 注意事项：<span id="caution-action"></span></p>
+                    </section>
+                    
+                    <section class="section-lucky">
+                        <h3>🍀 Lucky&Ease 开运指引</h3>
+                        <p>✨ 开运颜色：<span id="lucky-color"></span></p>
+                        <p>✨ 开运小技巧：<span id="lucky-tip"></span></p>
+                    </section>
+                </div>
+
+                <div class="brand-signature">
+                    🌿 以安逸之心，迎你的幸运 —— Lucky&Ease
+                </div>
+            </div>
         </div>
     </div>
 
